@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kunjal Group - Petrochemical Solutions Since 1983</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#1e40af', secondary: '#3b82f6' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before {
+            content: normal;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Hero Background Slideshow - REMOVED BACKGROUND-ATTACHMENT: FIXED */
+        .hero-bg {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide:nth-child(1) {
+            background-image: url('https://readdy.ai/api/search-image?query=Industrial%20oil%20refinery%20complex%20at%20golden%20hour%20evening%20with%20dramatic%20lighting%2C%20tall%20distillation%20towers%20and%20processing%20units%20silhouetted%20against%20warm%20orange%20sky%2C%20modern%20petrochemical%20facility%20with%20steam%20and%20industrial%20atmosphere%2C%20professional%20industrial%20photography%20with%20cinematic%20lighting%20and%20atmospheric%20perspective&width=1920&height=1080&seq=hero-refinery&orientation=landscape');
+        }
+
+        .hero-slide:nth-child(2) {
+            background-image: url('https://readdy.ai/api/search-image?query=Modern%20chemical%20processing%20plant%20with%20large%20storage%20tanks%20and%20pipelines%2C%20industrial%20facility%20at%20sunset%20with%20dramatic%20sky%2C%20petrochemical%20complex%20with%20professional%20lighting%2C%20industrial%20infrastructure%20photography&width=1920&height=1080&seq=hero-chemical&orientation=landscape');
+        }
+
+        .hero-slide:nth-child(3) {
+            background-image: url('https://readdy.ai/api/search-image?query=Large%20scale%20petrochemical%20manufacturing%20facility%20with%20steel%20structures%20and%20towers%2C%20industrial%20complex%20at%20blue%20hour%20with%20artificial%20lighting%2C%20modern%20oil%20processing%20plant%20with%20atmospheric%20perspective&width=1920&height=1080&seq=hero-manufacturing&orientation=landscape');
+        }
+
+        .hero-slide:nth-child(4) {
+            background-image: url('https://readdy.ai/api/search-image?query=Industrial%20chemical%20storage%20facility%20with%20multiple%20tanks%20and%20processing%20units%2C%20petrochemical%20plant%20during%20golden%20hour%20with%20warm%20lighting%2C%20modern%20industrial%20architecture%20with%20cinematic%20composition&width=1920&height=1080&seq=hero-storage&orientation=landscape');
+        }
+
+        .stats-bg {
+            background-image: url('https://readdy.ai/api/search-image?query=Modern%20industrial%20chemical%20processing%20facility%20with%20steel%20pipes%20and%20equipment%2C%20clean%20industrial%20environment%20with%20professional%20lighting%2C%20petrochemical%20plant%20infrastructure%20with%20geometric%20patterns%2C%20industrial%20photography%20with%20sharp%20details%20and%20professional%20composition&width=1920&height=1080&seq=stats-industrial&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .counter {
+            transition: all 0.3s ease;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .nav-container.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 10px 18px;
+            margin: 0 6px;
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            cursor: pointer;
+            font-weight: 500;
+            color: #374151;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            transform: translateX(-50%);
+            transition: width 0.4s ease;
+        }
+
+        .nav-item:hover::after {
+            width: 80%;
+        }
+
+        .nav-item:hover {
+            color: #1e40af;
+            transform: translateY(-2px);
+            background: rgba(59, 130, 246, 0.05);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-btn {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-btn.active {
+            background: rgba(30, 64, 175, 0.15);
+            border-color: rgba(30, 64, 175, 0.5);
+        }
+
+        .hamburger {
+            position: relative;
+            width: 20px;
+            height: 2px;
+            background: #1e40af;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 2px;
+            background: #1e40af;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger::before {
+            top: -6px;
+        }
+
+        .hamburger::after {
+            top: 6px;
+        }
+
+        .mobile-menu-btn.active .hamburger {
+            background: transparent;
+        }
+
+        .mobile-menu-btn.active .hamburger::before {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active .hamburger::after {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            max-height: calc(100vh - 64px);
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu .nav-item {
+            display: block;
+            margin: 0;
+            padding: 12px 16px;
+            border-radius: 0;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            background: none;
+            box-shadow: none;
+            transform: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.3);
+            text-align: center;
+        }
+
+        .mobile-menu .nav-item:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu .nav-item:hover {
+            background: rgba(59, 130, 246, 0.05);
+            color: #1e40af;
+            transform: none;
+        }
+
+        .mobile-menu .nav-item::before,
+        .mobile-menu .nav-item::after {
+            display: none;
+        }
+
+        /* Partners Slider */
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-slide {
+            display: flex;
+            animation: slide 20s linear infinite;
+        }
+
+        .animate-slide:hover {
+            animation-play-state: paused;
+        }
+
+        #partners-slider {
+            width: 200%;
+        }
+
+        /* Clients Sliders */
+        @keyframes slide-left {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slide-right {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-slide-left {
+            display: flex;
+            animation: slide-left 20s linear infinite;
+        }
+
+        .animate-slide-right {
+            display: flex;
+            animation: slide-right 20s linear infinite;
+        }
+
+        .animate-slide-left:hover,
+        .animate-slide-right:hover {
+            animation-play-state: paused;
+        }
+
+        #clients-slider-top,
+        #clients-slider-bottom {
+            width: 200%;
+        }
+
+        /* Responsive Styles - REMOVED BACKGROUND-ATTACHMENT: FIXED FROM MOBILE */
+        @media (max-width: 1024px) {
+            .nav-item {
+                padding: 8px 14px;
+                margin: 0 4px;
+                font-size: 0.95rem;
+            }
+
+            .logo-container img {
+                height: 36px;
+                width: 28px;
+            }
+
+            .grid.lg\\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid.lg\\:grid-cols-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .text-4xl {
+                font-size: 1.75rem;
+            }
+
+            .text-5xl {
+                font-size: 2rem;
+            }
+
+            .text-6xl {
+                font-size: 2.25rem;
+            }
+
+            .text-xl {
+                font-size: 1rem;
+            }
+
+            .text-lg {
+                font-size: 0.875rem;
+            }
+
+            .animate-slide,
+            .animate-slide-left,
+            .animate-slide-right {
+                animation-duration: 15s;
+            }
+
+            .partners-slider .flex-none,
+            .clients-slider-top .flex-none,
+            .clients-slider-bottom .flex-none {
+                width: 33.33%;
+            }
+
+            .partners-slider img,
+            .clients-slider-top img,
+            .clients-slider-bottom img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg h1 {
+                font-size: 2rem;
+            }
+
+            .hero-bg p {
+                font-size: 0.9rem;
+            }
+
+            .hero-bg button {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.875rem;
+            }
+
+            .nav-container {
+                padding: 0 10px;
+            }
+
+            .mobile-menu-btn {
+                width: 36px;
+                height: 36px;
+            }
+
+            .hamburger {
+                width: 18px;
+            }
+
+            .hamburger::before,
+            .hamburger::after {
+                width: 18px;
+            }
+
+            .mobile-menu .nav-item {
+                padding: 10px 12px;
+                font-size: 0.95rem;
+            }
+
+            .fade-in {
+                transform: translateY(15px);
+            }
+
+            footer .grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            footer .flex {
+                justify-content: center;
+            }
+
+            footer {
+                padding: 1.5rem 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-bg h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-bg p {
+                font-size: 0.85rem;
+            }
+
+            .hero-bg button {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+            }
+
+            .grid.lg\\:grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .text-4xl {
+                font-size: 1.5rem;
+            }
+
+            .text-5xl {
+                font-size: 1.75rem;
+            }
+
+            .text-6xl {
+                font-size: 2rem;
+            }
+
+            .text-lg {
+                font-size: 0.75rem;
+            }
+
+            .animate-slide,
+            .animate-slide-left,
+            .animate-slide-right {
+                animation-duration: 12s;
+            }
+
+            .partners-slider .flex-none,
+            .clients-slider-top .flex-none,
+            .clients-slider-bottom .flex-none {
+                width: 50%;
+            }
+
+            .partners-slider img,
+            .clients-slider-top img,
+            .clients-slider-bottom img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .mobile-menu-btn {
+                width: 32px;
+                height: 32px;
+            }
+
+            .hamburger {
+                width: 16px;
+            }
+
+            .hamburger::before,
+            .hamburger::after {
+                width: 16px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <nav class="nav-container">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="logo-container">
+                    <img src="./Image/logo.png" alt="Kunjal Group Logo" class="h-10 w-8 sm:h-12 sm:w-10 mr-2">
+                </div>
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="./index.html" class="nav-item">Home</a>
+                    <a href="./about.html" class="nav-item">About</a>
+                    <a href="./product.html" class="nav-item">Products</a>
+                    <a href="./contact.html" class="nav-item">Contact</a>
+                </div>
+                <button class="md:hidden mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                    <div class="hamburger"></div>
+                </button>
+            </div>
+        </div>
+        <div class="md:hidden mobile-menu" id="mobile-menu">
+            <div class="py-4">
+                <a href="./index.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Home</a>
+                <a href="./about.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">About</a>
+                <a href="./product.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Products</a>
+                <a href="./contact.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <section id="home" class="hero-bg min-h-screen flex items-center relative pt-16">
+        <!-- Hero Background Slides -->
+        <div class="hero-slide active"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 w-full">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6 fade-in">
+                    Welcome to Kunjal Group
+                </h1>
+                <p class="text-base sm:text-xl md:text-2xl text-gray-200 mb-4 sm:mb-6 max-w-2xl sm:max-w-3xl mx-auto fade-in">
+                    Delivering Petrochemical Solutions Across Borders Since 1983
+                </p>
+                <button
+                    class="bg-primary hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 !rounded-button text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-105 whitespace-nowrap fade-in"
+                    onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+                    Explore Our Products
+                    <i class="ri-arrow-right-line ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="py-12 sm:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+                        Your Reliable Petrochemical Partner
+                    </h2>
+                </div>
+                <div class="space-y-4 sm:space-y-6 fade-in">
+                    <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+                        Founded in 1983, Kunjal Synergies Private Limited is a leading importer and distributor of
+                        Petrochemicals, Solvents, and Pharma Raw Materials. With a presence across India and an
+                        associate office in Singapore, we offer end-to-end solutions — from import and storage to
+                        logistics and delivery.
+                    </p>
+                    <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+                        As a trusted Product Promoter of Reliance Industries Limited, we've surpassed USD 500 million in
+                        annual turnover. Our deep-rooted industry partnerships and logistics strength allow us to
+                        deliver the right product, at the right time, every time.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="stats-bg py-12 sm:py-16 relative">
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center fade-in">
+                    <div class="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-2 counter" data-target="40">0</div>
+                    <div class="text-sm sm:text-lg text-gray-200">Years of Experience</div>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-2">$<span class="counter"
+                            data-target="500">0</span>M+</div>
+                    <div class="text-sm sm:text-lg text-gray-200">Group Turnover</div>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-2 counter" data-target="20">0</div>
+                    <div class="text-sm sm:text-lg text-gray-200">Global Partners</div>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-2"><span class="counter"
+                            data-target="20">0</span>K+</div>
+                    <div class="text-sm sm:text-lg text-gray-200">Sq. Ft. Warehousing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="products" class="py-12 sm:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+                    Explore Our Products
+                </h2>
+                <p class="text-base sm:text-xl text-gray-700 mb-4 sm:mb-6 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
+                    We provide premium-quality Petrochemicals, Solvents, and Pharma Raw Materials sourced directly from
+                    renowned refineries and global manufacturers.
+                </p>
+                <a href="./product.html" data-readdy="true">
+                    <button
+                        class="bg-primary hover:bg-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 !rounded-button text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-105 whitespace-nowrap">
+                        View All Products
+                        <i class="ri-arrow-right-line ml-2"></i>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="partners" class="py-12 sm:py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-6 sm:mb-10 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">Our Partners</h2>
+                <p class="text-base sm:text-xl text-gray-600">Trusted by industry leaders worldwide</p>
+            </div>
+            <div class="relative overflow-hidden">
+                <div class="flex animate-slide partners-slider" id="partners-slider">
+                    <!-- Partner Items -->
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Kempar Logo.avif" alt="Kempar Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Petron.avif" alt="Petron Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/PTT.avif" alt="PTT Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/gc_polyols_logo.avif" alt="GC Polyols Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/LG Chem.avif" alt="LG Chem Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Siam_Cement_Group_Logo_svg.avif" alt="Siam Cement Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <!-- Duplicate Partner Items for Seamless Looping -->
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Kempar Logo.avif" alt="Kempar Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Petron.avif" alt="Petron Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/PTT.avif" alt="PTT Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/gc_polyols_logo.avif" alt="GC Polyols Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/LG Chem.avif" alt="LG Chem Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Siam_Cement_Group_Logo_svg.avif" alt="Siam Cement Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="clients" class="py-12 sm:py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-6 sm:mb-10 fade-in">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">Our Clients</h2>
+                <p class="text-base sm:text-xl text-gray-600">Serving industry leaders worldwide</p>
+            </div>
+            <!-- Top Slider (Left to Right) -->
+            <div class="relative overflow-hidden mb-6 sm:mb-8">
+                <div class="flex animate-slide-left clients-slider-top" id="clients-slider-top">
+                    <!-- Client Items -->
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/gc_polyols_logo.avif" alt="Client 1 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Kempar Logo.avif" alt="Client 2 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/LG Chem.avif" alt="Client 3 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Petron.avif" alt="Client 4 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/PTT.avif" alt="Client 5 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Siam_Cement_Group_Logo_svg.avif" alt="Client 6 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <!-- Duplicate Client Items for Seamless Looping -->
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/gc_polyols_logo.avif" alt="Client 1 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Kempar Logo.avif" alt="Client 2 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/LG Chem.avif" alt="Client 3 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Petron.avif" alt="Client 4 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/PTT.avif" alt="Client 5 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Siam_Cement_Group_Logo_svg.avif" alt="Client 6 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Slider (Right to Left) -->
+            <div class="relative overflow-hidden">
+                <div class="flex animate-slide-right clients-slider-bottom" id="clients-slider-bottom">
+                    <!-- Client Items -->
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/gc_polyols_logo.avif" alt="Client 7 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Kempar Logo.avif" alt="Client 8 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/LG Chem.avif" alt="Client 9 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Petron.avif" alt="Client 10 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/PTT.avif" alt="Client 11 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Siam_Cement_Group_Logo_svg.avif" alt="Client 12 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <!-- Duplicate Client Items for Seamless Looping -->
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/gc_polyols_logo.avif" alt="Client 7 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Kempar Logo.avif" alt="Client 8 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Petron.avif" alt="Client 9 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/PTT.avif" alt="Client 10 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/Siam_Cement_Group_Logo_svg.avif" alt="Client 11 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                    <div class="flex-none w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 px-2 sm:px-3">
+                        <div class="rounded-lg flex items-center justify-center min-h-20 sm:min-h-24 md:min-h-28 lg:min-h-32">
+                            <img src="./Partner/gc_polyols_logo.avif" alt="Client 12 Logo" class="w-16 sm:w-20 md:w-24 lg:w-28 h-16 sm:h-20 md:h-24 lg:h-28 object-contain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-gray-900 text-white py-8 sm:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
+                <div>
+                    <img src="./Image/logo.png" alt="Kunjal Group Logo" class="h-8 sm:h-10 w-6 sm:w-8 mr-2">
+                    <p class="text-sm sm:text-base text-gray-400">Delivering petrochemical solutions across borders since 1983.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-2 sm:mb-4 text-sm sm:text-base">Quick Links</h4>
+                    <div class="space-y-2">
+                        <a href="./index.html" class="block text-gray-400 hover:text-white text-sm sm:text-base transition-colors">Home</a>
+                        <a href="./about.html" class="block text-gray-400 hover:text-white text-sm sm:text-base transition-colors">About</a>
+                        <a href="./product.html" class="block text-gray-400 hover:text-white text-sm sm:text-base transition-colors">Products</a>
+                        <a href="./contact.html" class="block text-gray-400 hover:text-white text-sm sm:text-base transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-2 sm:mb-4 text-sm sm:text-base">Follow Us</h4>
+                    <div class="flex space-x-3 sm:space-x-4">
+                        <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-gray-800 hover:bg-primary rounded-full transition-colors">
+                            <i class="ri-facebook-fill text-sm sm:text-base"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-gray-800 hover:bg-primary rounded-full transition-colors">
+                            <i class="ri-linkedin-fill text-sm sm:text-base"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center bg-gray-800 hover:bg-primary rounded-full transition-colors">
+                            <i class="ri-twitter-x-fill text-sm sm:text-base"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-4 sm:pt-6 text-center text-gray-400 text-sm sm:text-base">
+                <p>© 2025 by Kunjal Group. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                mobileMenu.classList.toggle('open');
+                mobileMenuBtn.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a nav item
+            document.querySelectorAll('#mobile-menu .nav-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    mobileMenuBtn.classList.remove('active');
+                });
+            });
+
+            // Close mobile menu on outside click
+            document.addEventListener('click', function (event) {
+                if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                    mobileMenu.classList.remove('open');
+                    mobileMenuBtn.classList.remove('active');
+                }
+            });
+
+            // Prevent mobile menu from closing when clicking inside it
+            mobileMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Hero Background Slideshow
+            const heroSlides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+
+            function nextSlide() {
+                heroSlides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % heroSlides.length;
+                heroSlides[currentSlide].classList.add('active');
+            }
+
+            // Change slide every 5 seconds
+            setInterval(nextSlide, 5000);
+
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Counter animation
+            const counters = document.querySelectorAll('.counter');
+            let hasAnimated = false;
+            const animateCounters = () => {
+                if (hasAnimated) return;
+                hasAnimated = true;
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            setTimeout(() => requestAnimationFrame(updateCounter), 16);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    updateCounter();
+                });
+            };
+            const statsSection = document.querySelector('.stats-bg');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                    }
+                });
+            }, { threshold: 0.5 });
+            statsObserver.observe(statsSection);
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Partners slider control
+            const slider = document.getElementById('partners-slider');
+            slider.addEventListener('animationiteration', () => {
+                slider.style.transition = 'none';
+                slider.style.transform = 'translateX(0)';
+                setTimeout(() => {
+                    slider.style.transition = 'transform 0.3s ease';
+                }, 0);
+            });
+
+            // Clients slider control
+            const sliderTop = document.getElementById('clients-slider-top');
+            const sliderBottom = document.getElementById('clients-slider-bottom');
+            sliderTop.addEventListener('animationiteration', () => {
+                sliderTop.style.transition = 'none';
+                sliderTop.style.transform = 'translateX(-50%)';
+                setTimeout(() => {
+                    sliderTop.style.transition = 'transform 0.3s ease';
+                }, 0);
+            });
+            sliderBottom.addEventListener('animationiteration', () => {
+                sliderBottom.style.transition = 'none';
+                sliderBottom.style.transform = 'translateX(0)';
+                setTimeout(() => {
+                    sliderBottom.style.transition = 'transform 0.3s ease';
+                }, 0);
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function () {
+                const nav = document.querySelector('.nav-container');
+                if (window.scrollY > 100) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

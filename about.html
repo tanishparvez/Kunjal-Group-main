@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Kunjal Group</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e40af',
+            secondary: '#3b82f6'
+          },
+          borderRadius: {
+            'none': '0px',
+            'sm': '4px',
+            DEFAULT: '8px',
+            'md': '12px',
+            'lg': '16px',
+            'xl': '20px',
+            '2xl': '24px',
+            '3xl': '32px',
+            'full': '9999px',
+            'button': '8px'
+          },
+          screens: {
+            'xs': '480px'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css">
+  <style>
+    :where([class^="ri-"])::before {
+      content: normal;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .about-hero-bg {
+      background-image: url('https://readdy.ai/api/search-image?query=Modern%20petrochemical%20facility%20at%20dusk%20with%20dramatic%20lighting%2C%20showing%20clean%20industrial%20architecture%20with%20gleaming%20steel%20and%20glass%20structures%2C%20professional%20corporate%20photography%20with%20emphasis%20on%20technology%20and%20innovation%2C%20soft%20evening%20light%20creating%20a%20sophisticated%20atmosphere&width=1920&height=600&seq=about-hero&orientation=landscape');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .nav-container {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease;
+    }
+
+    .nav-container.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-item {
+      position: relative;
+      padding: 10px 18px;
+      margin: 0 6px;
+      border-radius: 8px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      cursor: pointer;
+      font-weight: 500;
+      color: #374151;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 1rem;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .nav-item:hover::before {
+      left: 100%;
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #1e40af, #3b82f6);
+      transform: translateX(-50%);
+      transition: width 0.4s ease;
+    }
+
+    .nav-item:hover::after {
+      width: 80%;
+    }
+
+    .nav-item:hover {
+      color: #1e40af;
+      transform: translateY(-2px);
+      background: rgba(59, 130, 246, 0.05);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      transform: scale(1);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container:hover {
+      transform: scale(1.05);
+    }
+
+    .mobile-menu-btn {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 2px solid rgba(59, 130, 246, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .mobile-menu-btn:hover {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: rgba(59, 130, 246, 0.5);
+      transform: scale(1.05);
+    }
+
+    .mobile-menu-btn.active {
+      background: rgba(30, 64, 175, 0.15);
+      border-color: rgba(30, 64, 175, 0.5);
+    }
+
+    .hamburger {
+      position: relative;
+      width: 20px;
+      height: 2px;
+      background: #1e40af;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: #1e40af;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .hamburger::before {
+      top: -6px;
+    }
+
+    .hamburger::after {
+      top: 6px;
+    }
+
+    .mobile-menu-btn.active .hamburger {
+      background: transparent;
+    }
+
+    .mobile-menu-btn.active .hamburger::before {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-menu-btn.active .hamburger::after {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transform: translateY(-100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .mobile-menu.open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu .nav-item {
+      display: block;
+      margin: 0;
+      padding: 12px 16px;
+      border-radius: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      background: none;
+      box-shadow: none;
+      transform: none;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.3);
+      text-align: center;
+    }
+
+    .mobile-menu .nav-item:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-menu .nav-item:hover {
+      background: rgba(59, 130, 246, 0.05);
+      color: #1e40af;
+      transform: none;
+    }
+
+    .mobile-menu .nav-item::before,
+    .mobile-menu .nav-item::after {
+      display: none;
+    }
+
+    .leadership-card:hover {
+      transform: translateY(-5px);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-open {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    .modal-open #modal-content {
+      transform: scale(1) !important;
+    }
+
+    #leadership-modal {
+      backdrop-filter: blur(10px);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.1);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(0, 0, 0, 0.2);
+      transform: scale(1.1);
+    }
+
+    /* Horizontal Timeline Styles */
+    .timeline-wrapper {
+      position: relative;
+      width: 100%;
+      padding: 50px 0;
+      overflow-x: auto;
+      overflow-y: visible;
+    }
+
+    .timeline-container {
+      display: flex;
+      align-items: center;
+      min-width: max-content;
+      padding: 0 50px;
+      position: relative;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #1e40af, #3b82f6, #1e40af);
+      border-radius: 2px;
+      z-index: 1;
+    }
+
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline-node {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #1e40af;
+      border: 4px solid white;
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+      margin-bottom: 20px;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      z-index: 3;
+    }
+
+    .timeline-node:hover {
+      transform: scale(1.3);
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
+    }
+
+    .timeline-node.secondary {
+      background: #3b82f6;
+    }
+
+    .timeline-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      width: 320px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(226, 232, 240, 0.5);
+    }
+
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+      transition: left 0.8s ease;
+    }
+
+    .timeline-card:hover::before {
+      left: 100%;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .timeline-date {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1e40af;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .timeline-date::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #1e40af, #3b82f6);
+      transition: width 0.4s ease;
+    }
+
+    .timeline-card:hover .timeline-date::after {
+      width: 100%;
+    }
+
+    .timeline-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 12px;
+    }
+
+    .timeline-description {
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .timeline-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .timeline-badge {
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Scroll Button */
+    #timeline-scroll-btn {
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    #timeline-scroll-btn.visible {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    /* Custom Scrollbar */
+    .timeline-wrapper::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .timeline-wrapper::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+
+    .timeline-wrapper::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, #1e40af, #3b82f6);
+      border-radius: 4px;
+    }
+
+    .timeline-wrapper::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(90deg, #1d4ed8, #2563eb);
+    }
+
+    @media (max-width: 1024px) {
+      .about-hero-bg {
+        min-height: 200px;
+      }
+
+      .nav-item {
+        padding: 8px 14px;
+        margin: 0 4px;
+        font-size: 0.95rem;
+      }
+
+      .logo-container img {
+        height: 36px;
+        width: 28px;
+      }
+
+      .grid.lg\\:grid-cols-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid.md\\:grid-cols-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid.lg\\:grid-cols-4 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .text-2xl {
+        font-size: 1.5rem;
+      }
+
+      .text-3xl {
+        font-size: 1.75rem;
+      }
+
+      .text-4xl {
+        font-size: 2rem;
+      }
+
+      .text-lg {
+        font-size: 0.875rem;
+      }
+
+      .text-xl {
+        font-size: 1rem;
+      }
+
+      .timeline-card {
+        width: 280px;
+        padding: 20px;
+      }
+
+      .timeline-item {
+        margin: 0 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-hero-bg {
+        min-height: 180px;
+      }
+
+      .about-hero-bg h1 {
+        font-size: 2rem;
+      }
+
+      .about-hero-bg p {
+        font-size: 0.9rem;
+      }
+
+      .nav-container {
+        padding: 0 10px;
+      }
+
+      .mobile-menu-btn {
+        width: 36px;
+        height: 36px;
+      }
+
+      .hamburger {
+        width: 18px;
+      }
+
+      .hamburger::before,
+      .hamburger::after {
+        width: 18px;
+      }
+
+      .mobile-menu .nav-item {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+      }
+
+      .fade-in {
+        transform: translateY(15px);
+      }
+
+      .py-12 {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      .py-20 {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .mb-6 {
+        margin-bottom: 1rem;
+      }
+
+      .mb-12 {
+        margin-bottom: 1.5rem;
+      }
+
+      .text-base {
+        font-size: 0.875rem;
+      }
+
+      .leadership-card img {
+        width: 200px;
+        height: 250px;
+      }
+      
+      #modal-content {
+        margin: 20px;
+        max-height: calc(100vh - 40px);
+      }
+
+      .timeline-card {
+        width: 250px;
+        padding: 16px;
+      }
+
+      .timeline-item {
+        margin: 0 20px;
+      }
+
+      .timeline-container {
+        padding: 0 20px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .about-hero-bg {
+        min-height: 150px;
+      }
+
+      .about-hero-bg h1 {
+        font-size: 1.5rem;
+      }
+
+      .about-hero-bg p {
+        font-size: 0.85rem;
+      }
+
+      .grid.lg\\:grid-cols-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .text-2xl {
+        font-size: 1.25rem;
+      }
+
+      .text-3xl {
+        font-size: 1.5rem;
+      }
+
+      .text-4xl {
+        font-size: 1.75rem;
+      }
+
+      .text-lg {
+        font-size: 0.75rem;
+      }
+
+      .text-xl {
+        font-size: 0.875rem;
+      }
+
+      .mobile-menu-btn {
+        width: 32px;
+        height: 32px;
+      }
+
+      .hamburger {
+        width: 16px;
+      }
+
+      .hamburger::before,
+      .hamburger::after {
+        width: 16px;
+      }
+
+      .p-6 {
+        padding: 0.75rem;
+      }
+
+      .p-8 {
+        padding: 1rem;
+      }
+
+      .mb-4 {
+        margin-bottom: 0.75rem;
+      }
+
+      .timeline-card {
+        width: 220px;
+        padding: 14px;
+      }
+
+      .timeline-item {
+        margin: 0 15px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: none;
+      }
+    }
+
+    /* Animation delays for staggered effect */
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+    .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <nav class="nav-container">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="logo-container">
+          <img src="./Image/logo.png" alt="Kunjal Group Logo" class="h-10 w-8 sm:h-12 sm:w-10 mr-2" 
+               onerror="this.src='https://via.placeholder.com/40x32?text=Logo'; console.log('Logo not found at ./Image/logo.png, using placeholder');">
+        </div>
+        <div class="hidden md:flex items-center space-x-2">
+          <a href="./index.html" class="nav-item">Home</a>
+          <a href="./about.html" class="nav-item">About</a>
+          <a href="./product.html" class="nav-item">Products</a>
+          <a href="./contact.html" class="nav-item">Contact</a>
+        </div>
+        <button class="md:hidden mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+          <div class="hamburger"></div>
+        </button>
+      </div>
+    </div>
+    <div class="md:hidden mobile-menu" id="mobile-menu">
+      <div class="py-4">
+        <a href="./index.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Home</a>
+        <a href="./about.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">About</a>
+        <a href="./product.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Products</a>
+        <a href="./contact.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="about-hero-bg h-[50vh] min-h-[300px] max-h-[500px] relative mt-16">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 h-full flex items-center justify-center">
+      <div class="text-center px-4 xs:px-2">
+        <h1 class="text-4xl xs:text-3xl sm:text-5xl font-bold text-white mb-4 fade-in">About Us</h1>
+        <p class="text-lg xs:text-base sm:text-xl text-gray-200 fade-in">Building Trust Through Excellence Since 1983</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 xs:py-8 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 xs:px-2 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-8 xs:gap-6 sm:gap-16 items-center">
+        <div class="fade-in">
+          <h2 class="text-2xl xs:text-xl sm:text-3xl font-bold text-gray-900 mb-6">Company Overview</h2>
+          <p class="text-base xs:text-sm sm:text-lg text-gray-700 leading-relaxed mb-6">
+            Kunjal Synergies Private Limited has been a cornerstone in India's petrochemical industry since
+            1983. As a leading importer and distributor of Petrochemicals, Solvents, and Pharma Raw
+            Materials, we've built our reputation on reliability, quality, and innovation.
+          </p>
+          <p class="text-base xs:text-sm sm:text-lg text-gray-700 leading-relaxed">
+            With our headquarters in Kolkata and strategic presence across major Indian cities, we serve
+            diverse industries with comprehensive solutions in chemical distribution and supply chain
+            management.
+          </p>
+        </div>
+        <div class="space-y-8 fade-in">
+          <div class="bg-gray-50 p-6 xs:p-4 sm:p-8 rounded-lg">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="ri-eye-line text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-lg xs:text-base sm:text-xl font-semibold text-gray-900 mb-3">Our Vision</h3>
+            <p class="text-gray-700">To be India's most trusted partner in petrochemical distribution,
+              setting industry standards for quality, reliability, and sustainable practices.</p>
+          </div>
+          <div class="bg-gray-50 p-6 xs:p-4 sm:p-8 rounded-lg">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="ri-flag-line text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-lg xs:text-base sm:text-xl font-semibold text-gray-900 mb-3">Our Mission</h3>
+            <p class="text-gray-700">To deliver superior value to our stakeholders through innovative
+              solutions, operational excellence, and sustainable business practices.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 xs:py-8 sm:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 xs:px-2 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 xs:mb-8 sm:mb-16 fade-in">
+        <h2 class="text-2xl xs:text-xl sm:text-3xl font-bold text-gray-900 mb-4">Core Services</h2>
+        <p class="text-lg xs:text-base sm:text-xl text-gray-600">Comprehensive solutions for your chemical needs</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 xs:gap-6">
+        <div class="bg-white p-6 xs:p-4 sm:p-8 rounded-lg shadow-sm fade-in">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="ri-ship-line text-2xl text-primary"></i>
+          </div>
+          <h3 class="text-lg xs:text-base sm:text-xl font-semibold text-gray-900 mb-3">International Sourcing</h3>
+          <p class="text-gray-700">Direct partnerships with global manufacturers ensuring quality and
+            competitive pricing.</p>
+        </div>
+        <div class="bg-white p-6 xs:p-4 sm:p-8 rounded-lg shadow-sm fade-in">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="ri-store-line text-2xl text-primary"></i>
+          </div>
+          <h3 class="text-lg xs:text-base sm:text-xl font-semibold text-gray-900 mb-3">Bonded Storage</h3>
+          <p class="text-gray-700">State-of-the-art warehousing facilities with strict quality control
+            measures.</p>
+        </div>
+        <div class="bg-white p-6 xs:p-4 sm:p-8 rounded-lg shadow-sm fade-in">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="ri-truck-line text-2xl text-primary"></i>
+          </div>
+          <h3 class="text-lg xs:text-base sm:text-xl font-semibold text-gray-900 mb-3">Advanced Logistics</h3>
+          <p class="text-gray-700">Efficient distribution network ensuring timely delivery across India.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Horizontal Timeline Section -->
+  <section class="py-12 xs:py-8 sm:py-20 bg-white" id="timeline-section">
+    <div class="max-w-7xl mx-auto px-4 xs:px-2 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 xs:mb-8 sm:mb-16 fade-in">
+        <h2 class="text-2xl xs:text-xl sm:text-3xl font-bold text-gray-900 mb-4">Our Journey</h2>
+        <p class="text-lg xs:text-base sm:text-xl text-gray-600">Major milestones that shaped our success story</p>
+        <p class="text-sm text-gray-500 mt-2">← Scroll horizontally to explore our timeline →</p>
+      </div>
+
+      <!-- Scroll to Top Button -->
+      <button id="timeline-scroll-btn" class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 opacity-0 invisible z-40">
+        <i class="ri-arrow-up-line text-xl"></i>
+      </button>
+
+      <!-- Timeline Wrapper with Horizontal Scroll -->
+      <div class="timeline-wrapper fade-in">
+        <div class="timeline-container">
+          <!-- Timeline Line -->
+          <div class="timeline-line"></div>
+
+          <!-- Foundation 1983 -->
+          <div class="timeline-item">
+            <div class="timeline-node"></div>
+            <div class="timeline-card" style="background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);">
+              <div class="timeline-date">1983</div>
+              <div class="timeline-title">Foundation Year</div>
+              <div class="timeline-description">
+                Kunjal Group was established with a vision to become India's most trusted partner in petrochemical distribution.
+              </div>
+              <div class="timeline-badges">
+                <span class="timeline-badge" style="background: #f59e0b; color: white;">42+ Years</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2000 -->
+          <div class="timeline-item">
+            <div class="timeline-node secondary"></div>
+            <div class="timeline-card" style="background: linear-gradient(135deg, #ecfdf5 0%, #6ee7b7 100%);">
+              <div class="timeline-date">June 2000</div>
+              <div class="timeline-title">New Millennium Vision</div>
+              <div class="timeline-description">
+                Set ambitious vision with focus on constant growth and innovation in the petrochemical distribution sector.
+              </div>
+              <div class="timeline-badges">
+                <span class="timeline-badge" style="background: #10b981; color: white;">Innovation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2007 -->
+          <div class="timeline-item">
+            <div class="timeline-node"></div>
+            <div class="timeline-card" style="background: linear-gradient(135deg, #fef2f2 0%, #fca5a5 100%);">
+              <div class="timeline-date">December 2007</div>
+              <div class="timeline-title">Bulk Business Expansion</div>
+              <div class="timeline-description">
+                Expanded into Bulk business under third generation stewardship. Established partnerships with global principals.
+              </div>
+              <div class="timeline-badges">
+                <span class="timeline-badge" style="background: #ef4444; color: white;">ICC Chemicals</span>
+                <span class="timeline-badge" style="background: #ef4444; color: white;">Sojitz</span>
+                <span class="timeline-badge" style="background: #ef4444; color: white;">Kolmar</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2019 -->
+          <div class="timeline-item">
+            <div class="timeline-node secondary"></div>
+            <div class="timeline-card" style="background: linear-gradient(135deg, #f3e8ff 0%, #c084fc 100%);">
+              <div class="timeline-date">April 2019</div>
+              <div class="timeline-title">PAN India Expansion</div>
+              <div class="timeline-description">
+                Enhanced customer service with PAN India offices, storage facilities. Expanded to 8 major cities across India.
+              </div>
+              <div class="timeline-badges">
+                <span class="timeline-badge" style="background: #8b5cf6; color: white;">8 Cities</span>
+                <span class="timeline-badge" style="background: #8b5cf6; color: white;">11 Years Growth</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2021 June -->
+          <div class="timeline-item">
+            <div class="timeline-node"></div>
+            <div class="timeline-card" style="background: linear-gradient(135deg, #e0f2fe 0%, #4dd0e1 100%);">
+              <div class="timeline-date">June 2021</div>
+              <div class="timeline-title">Third Generation Leadership</div>
+              <div class="timeline-description">
+                The energetic third generation took the baton forward with new young, tech-savvy and well-qualified staff.
+              </div>
+              <div class="timeline-badges">
+                <span class="timeline-badge" style="background: #00bcd4; color: white;">$1B Target 2028</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2021 September -->
+          <div class="timeline-item">
+            <div class="timeline-node secondary"></div>
+            <div class="timeline-card" style="background: linear-gradient(135deg, #e3f2fd 0%, #64b5f6 100%);">
+              <div class="timeline-date">September 2021</div>
+              <div class="timeline-title">BPCL Partnership</div>
+              <div class="timeline-description">
+                RSG & Co was appointed as a Distributor of BPCL (Bharat Petroleum Corporation Ltd), among India's Top 5 Companies.
+              </div>
+              <div class="timeline-badges">
+                <span class="timeline-badge" style="background: #2196f3; color: white;">Top 5 Company</span>
+                <span class="timeline-badge" style="background: #2196f3; color: white;">BPCL Partner</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 xs:py-8 sm:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 xs:px-2 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 xs:mb-8 sm:mb-16 fade-in">
+        <h2 class="text-2xl xs:text-xl sm:text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
+        <p class="text-lg xs:text-base sm:text-xl text-gray-600">The principles that guide our operations</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 xs:gap-6">
+        <div class="text-center fade-in">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="ri-shield-check-line text-3xl text-primary"></i>
+          </div>
+          <h3 class="text-base xs:text-sm sm:text-lg font-semibold text-gray-900 mb-2">Quality</h3>
+          <p class="text-gray-700">Unwavering commitment to product excellence</p>
+        </div>
+        <div class="text-center fade-in">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="ri-heart-line text-3xl text-primary"></i>
+          </div>
+          <h3 class="text-base xs:text-sm sm:text-lg font-semibold text-gray-900 mb-2">Integrity</h3>
+          <p class="text-gray-700">Honest and ethical business practices</p>
+        </div>
+        <div class="text-center fade-in">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="ri-team-line text-3xl text-primary"></i>
+          </div>
+          <h3 class="text-base xs:text-sm sm:text-lg font-semibold text-gray-900 mb-2">Partnership</h3>
+          <p class="text-gray-700">Building lasting relationships</p>
+        </div>
+        <div class="text-center fade-in">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="ri-leaf-line text-3xl text-primary"></i>
+          </div>
+          <h3 class="text-base xs:text-sm sm:text-lg font-semibold text-gray-900 mb-2">Sustainability</h3>
+          <p class="text-gray-700">Responsible environmental practices</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Section -->
+  <section class="py-12 xs:py-8 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 xs:px-2 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 xs:mb-8 sm:mb-16 fade-in">
+        <h2 class="text-2xl xs:text-xl sm:text-3xl font-bold text-gray-900 mb-4">Meet the Senior Leadership</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12 xs:gap-8 max-w-4xl mx-auto">
+        <!-- Rajesh Somani -->
+        <div class="text-center fade-in cursor-pointer leadership-card" data-leader="rajesh">
+          <div class="relative mb-6 group">
+            <img src="./Image/rajesh-somani.jpg" alt="Rajesh Somani" 
+                 class="w-64 h-80 object-cover rounded-lg mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                 onerror="this.src='https://via.placeholder.com/256x320/1e40af/ffffff?text=Rajesh+Somani';">
+            <div class="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <h3 class="text-xl xs:text-lg sm:text-2xl font-bold text-gray-900 mb-2">Rajesh Somani</h3>
+          <p class="text-lg xs:text-base text-gray-600 mb-4">MD & CEO</p>
+          <div class="w-8 h-0.5 bg-primary mx-auto"></div>
+        </div>
+
+        <!-- Manish Tibrewal -->
+        <div class="text-center fade-in cursor-pointer leadership-card" data-leader="manish">
+          <div class="relative mb-6 group">
+            <img src="./Image/manish-tibrewal.jpg" alt="Manish Tibrewal" 
+                 class="w-64 h-80 object-cover rounded-lg mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+                 onerror="this.src='https://via.placeholder.com/256x320/1e40af/ffffff?text=Manish+Tibrewal';">
+            <div class="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+          <h3 class="text-xl xs:text-lg sm:text-2xl font-bold text-gray-900 mb-2">Manish Tibrewal</h3>
+          <p class="text-lg xs:text-base text-gray-600 mb-4">CFO</p>
+          <div class="w-8 h-0.5 bg-primary mx-auto"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Modal -->
+  <div id="leadership-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] opacity-0 invisible transition-all duration-300">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="modal-content">
+        <!-- Modal content will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-gray-900 text-white py-12 xs:py-8 sm:py-16">
+    <div class="max-w-7xl mx-auto px-4 xs:px-2 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8 xs:gap-6 mb-8">
+        <div>
+          <img src="./Image/logo.png" alt="Kunjal Group Logo" class="h-12 w-10 mr-2" 
+               onerror="this.src='https://via.placeholder.com/40x32?text=Logo'; console.log('Logo not found at ./Image/logo.png, using placeholder');">
+          <p class="text-gray-400">Delivering petrochemical solutions across borders since 1983.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Navigation</h4>
+          <div class="space-y-2">
+            <a href="index.html" class="block text-gray-400 hover:text-white transition-colors">Home</a>
+            <a href="./about.html" class="block text-gray-400 hover:text-white transition-colors">About</a>
+            <a href="products.html" class="block text-gray-400 hover:text-white transition-colors">Products</a>
+            <a href="contact.html" class="block text-gray-400 hover:text-white transition-colors">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Follow Us</h4>
+          <div class="flex space-x-4">
+            <a href="https://www.facebook.com/kunjalgroup" target="_blank"
+              class="w-10 h-10 flex items-center justify-center bg-gray-800 hover:bg-primary rounded-full transition-colors">
+              <i class="ri-facebook-fill"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/kunjalgroup" target="_blank"
+              class="w-10 h-10 flex items-center justify-center bg-gray-800 hover:bg-primary rounded-full transition-colors">
+              <i class="ri-linkedin-fill"></i>
+            </a>
+            <a href="https://x.com/kunjalgroup" target="_blank"
+              class="w-10 h-10 flex items-center justify-center bg-gray-800 hover:bg-primary rounded-full transition-colors">
+              <i class="ri-twitter-x-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+        <p>© 2025 by Kunjal Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          mobileMenu.classList.toggle('open');
+          mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a nav item
+        document.querySelectorAll('#mobile-menu .nav-item').forEach(item => {
+          item.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            mobileMenuBtn.classList.remove('active');
+          });
+        });
+
+        // Close mobile menu on outside click
+        document.addEventListener('click', function (event) {
+          if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+            mobileMenu.classList.remove('open');
+            mobileMenuBtn.classList.remove('active');
+          }
+        });
+
+        // Prevent mobile menu from closing when clicking inside it
+        mobileMenu.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+
+      // Scroll animations
+      if ('IntersectionObserver' in window) {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => {
+          observer.observe(el);
+        });
+      } else {
+        document.querySelectorAll('.fade-in').forEach(el => {
+          el.classList.add('visible');
+        });
+      }
+
+      // Navbar scroll effect
+      window.addEventListener('scroll', function () {
+        const nav = document.querySelector('.nav-container');
+        if (window.scrollY > 100) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      });
+
+      // Timeline scroll functionality
+      const timelineScrollBtn = document.getElementById('timeline-scroll-btn');
+      const timelineSection = document.getElementById('timeline-section');
+
+      // Show/hide scroll button based on timeline visibility
+      function handleTimelineScroll() {
+        if (timelineSection) {
+          const rect = timelineSection.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+          
+          if (isVisible && window.scrollY > 300) {
+            timelineScrollBtn.classList.add('visible');
+          } else {
+            timelineScrollBtn.classList.remove('visible');
+          }
+        }
+      }
+
+      // Scroll to top of timeline
+      if (timelineScrollBtn) {
+        timelineScrollBtn.addEventListener('click', () => {
+          if (timelineSection) {
+            timelineSection.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      }
+
+      // Listen for scroll events
+      window.addEventListener('scroll', handleTimelineScroll);
+
+      // Timeline item hover effects
+      document.querySelectorAll('.timeline-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-8px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+        });
+      });
+
+      // Timeline smooth horizontal scroll with mouse wheel
+      const timelineWrapper = document.querySelector('.timeline-wrapper');
+      if (timelineWrapper) {
+        timelineWrapper.addEventListener('wheel', function(e) {
+          if (e.deltaY !== 0) {
+            e.preventDefault();
+            this.scrollLeft += e.deltaY;
+          }
+        });
+      }
+
+      // Leadership modal functionality
+      const leadershipCards = document.querySelectorAll('.leadership-card');
+      const modal = document.getElementById('leadership-modal');
+      const modalContent = document.getElementById('modal-content');
+
+      const leadershipData = {
+        rajesh: {
+          name: "Rajesh Somani",
+          title: "MD & CEO",
+          image: "./Image/rajesh-somani.jpg",
+          bio: `Mr. Rajesh Somani, a visionary leader with over three decades of expertise in international commodities trading and has held leadership role as MD & CEO at global firms such as Aditya Birla Global Trading (Singapore) Pte Ltd and Global Smart Comtrade Pte Ltd, driving multi-billion-dollar revenues and pioneering strategic growth across markets.
+
+A Harvard Business School alumnus and qualified Chartered Accountant, Rajesh combines financial acumen with cutting-edge insights from executive programs in Big Data Analytics and Machine Learning (National University of Singapore).
+
+His accolades include the Chairman's Award for Outstanding Leadership (Aditya Birla Group), the Asia Pacific Entrepreneurship Award and Member of the Year award by ICAI, New Delhi in First International Leaders Awards in 2018 in Abu Dhabi, underscoring his transformative impact.
+
+Committed to industry advancement, Rajesh chairs the ICAI Dubai Chapter and as a member of the executive committee, he has positioned IFSC's GIFT City as a global commodity trading hub, guided by his philosophy, "If you want to go fast, go alone; if you want to go far, go together," which underscores his collaborative drive for sustainable excellence. A firm believer in continuous learning, he champions the ethos that "When you stop learning, you stop leading," blending leadership with relentless growth.`
+        },
+        manish: {
+          name: "Manish Tibrewal",
+          title: "CFO",
+          image: "./Image/manish-tibrewal.jpg",
+          bio: `Manish Tibrewal brings extensive experience in financial management and strategic planning to his role as CFO. With over two decades of experience in the petrochemical and trading industry, he has been instrumental in driving financial excellence and operational efficiency.
+
+His expertise spans across financial planning, risk management, treasury operations, and corporate governance. Manish has successfully led multiple financial restructuring initiatives and has been pivotal in establishing robust financial controls and processes.
+
+He holds professional qualifications in finance and has completed advanced programs in corporate finance and strategic management. His leadership has been crucial in supporting the company's growth trajectory and expansion plans.
+
+Manish is known for his analytical approach to problem-solving and his ability to translate complex financial data into actionable business insights. His commitment to transparency and ethical practices has strengthened stakeholder confidence and trust.`
+        }
+      };
+
+      function openModal(leaderKey) {
+        const leader = leadershipData[leaderKey];
+        if (!leader) return;
+
+        modalContent.innerHTML = `
+          <button class="modal-close-btn" onclick="closeModal()">
+            <i class="ri-close-line text-xl"></i>
+          </button>
+          <div class="flex flex-col lg:flex-row gap-8 p-8">
+            <div class="lg:w-1/3 flex-shrink-0">
+              <img src="${leader.image}" alt="${leader.name}" 
+                   class="w-full max-w-sm mx-auto rounded-lg shadow-lg"
+                   onerror="this.src='https://via.placeholder.com/400x500/1e40af/ffffff?text=${encodeURIComponent(leader.name)}';">
+            </div>
+            <div class="lg:w-2/3">
+              <h2 class="text-3xl font-bold text-gray-900 mb-2">${leader.name}</h2>
+              <p class="text-xl text-primary font-semibold mb-6">${leader.title}</p>
+              <div class="prose prose-lg max-w-none">
+                ${leader.bio.split('\n\n').map(paragraph => `<p class="mb-4 text-gray-700 leading-relaxed">${paragraph}</p>`).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+
+        modal.classList.add('modal-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      window.closeModal = function() {
+        modal.classList.remove('modal-open');
+        document.body.style.overflow = 'auto';
+      }
+
+      // Event listeners
+      leadershipCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const leaderKey = card.dataset.leader;
+          openModal(leaderKey);
+        });
+      });
+
+      // Close modal on outside click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close modal on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
