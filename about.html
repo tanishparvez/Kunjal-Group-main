@@ -35,7 +35,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css">
   <style>
     :where([class^="ri-"])::before {
@@ -604,7 +605,7 @@
         width: 200px;
         height: 250px;
       }
-      
+
       #modal-content {
         margin: 20px;
         max-height: calc(100vh - 40px);
@@ -708,12 +709,29 @@
     }
 
     /* Animation delays for staggered effect */
-    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-    .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+    .timeline-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .timeline-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .timeline-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .timeline-item:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .timeline-item:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .timeline-item:nth-child(6) {
+      animation-delay: 0.6s;
+    }
   </style>
 </head>
 
@@ -722,8 +740,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <div class="logo-container">
-          <img src="./Image/logo.png" alt="Kunjal Group Logo" class="h-10 w-8 sm:h-12 sm:w-10 mr-2" 
-               onerror="this.src='https://via.placeholder.com/40x32?text=Logo'; console.log('Logo not found at ./Image/logo.png, using placeholder');">
+          <img src="./Image/logo.png" alt="Kunjal Group Logo" class="h-10 w-8 sm:h-12 sm:w-10 mr-2"
+            onerror="this.src='https://via.placeholder.com/40x32?text=Logo'; console.log('Logo not found at ./Image/logo.png, using placeholder');">
         </div>
         <div class="hidden md:flex items-center space-x-2">
           <a href="./index.html" class="nav-item">Home</a>
@@ -738,10 +756,14 @@
     </div>
     <div class="md:hidden mobile-menu" id="mobile-menu">
       <div class="py-4">
-        <a href="./index.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Home</a>
-        <a href="./about.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">About</a>
-        <a href="./product.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Products</a>
-        <a href="./contact.html" class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Contact</a>
+        <a href="./index.html"
+          class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Home</a>
+        <a href="./about.html"
+          class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">About</a>
+        <a href="./product.html"
+          class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Products</a>
+        <a href="./contact.html"
+          class="nav-item block px-6 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Contact</a>
       </div>
     </div>
   </nav>
@@ -751,7 +773,8 @@
     <div class="relative z-10 h-full flex items-center justify-center">
       <div class="text-center px-4 xs:px-2">
         <h1 class="text-4xl xs:text-3xl sm:text-5xl font-bold text-white mb-4 fade-in">About Us</h1>
-        <p class="text-lg xs:text-base sm:text-xl text-gray-200 fade-in">Building Trust Through Excellence Since 1983</p>
+        <p class="text-lg xs:text-base sm:text-xl text-gray-200 fade-in">Building Trust Through Excellence Since 1983
+        </p>
       </div>
     </div>
   </section>
@@ -838,7 +861,8 @@
       </div>
 
       <!-- Scroll to Top Button -->
-      <button id="timeline-scroll-btn" class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 opacity-0 invisible z-40">
+      <button id="timeline-scroll-btn"
+        class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 opacity-0 invisible z-40">
         <i class="ri-arrow-up-line text-xl"></i>
       </button>
 
@@ -855,7 +879,8 @@
               <div class="timeline-date">1983</div>
               <div class="timeline-title">Foundation Year</div>
               <div class="timeline-description">
-                Kunjal Group was established with a vision to become India's most trusted partner in petrochemical distribution.
+                Kunjal Group was established with a vision to become India's most trusted partner in petrochemical
+                distribution.
               </div>
               <div class="timeline-badges">
                 <span class="timeline-badge" style="background: #f59e0b; color: white;">42+ Years</span>
@@ -870,7 +895,8 @@
               <div class="timeline-date">June 2000</div>
               <div class="timeline-title">New Millennium Vision</div>
               <div class="timeline-description">
-                Set ambitious vision with focus on constant growth and innovation in the petrochemical distribution sector.
+                Set ambitious vision with focus on constant growth and innovation in the petrochemical distribution
+                sector.
               </div>
               <div class="timeline-badges">
                 <span class="timeline-badge" style="background: #10b981; color: white;">Innovation</span>
@@ -885,7 +911,8 @@
               <div class="timeline-date">December 2007</div>
               <div class="timeline-title">Bulk Business Expansion</div>
               <div class="timeline-description">
-                Expanded into Bulk business under third generation stewardship. Established partnerships with global principals.
+                Expanded into Bulk business under third generation stewardship. Established partnerships with global
+                principals.
               </div>
               <div class="timeline-badges">
                 <span class="timeline-badge" style="background: #ef4444; color: white;">ICC Chemicals</span>
@@ -902,7 +929,8 @@
               <div class="timeline-date">April 2019</div>
               <div class="timeline-title">PAN India Expansion</div>
               <div class="timeline-description">
-                Enhanced customer service with PAN India offices, storage facilities. Expanded to 8 major cities across India.
+                Enhanced customer service with PAN India offices, storage facilities. Expanded to 8 major cities across
+                India.
               </div>
               <div class="timeline-badges">
                 <span class="timeline-badge" style="background: #8b5cf6; color: white;">8 Cities</span>
@@ -918,7 +946,8 @@
               <div class="timeline-date">June 2021</div>
               <div class="timeline-title">Third Generation Leadership</div>
               <div class="timeline-description">
-                The energetic third generation took the baton forward with new young, tech-savvy and well-qualified staff.
+                The energetic third generation took the baton forward with new young, tech-savvy and well-qualified
+                staff.
               </div>
               <div class="timeline-badges">
                 <span class="timeline-badge" style="background: #00bcd4; color: white;">$1B Target 2028</span>
@@ -933,7 +962,8 @@
               <div class="timeline-date">September 2021</div>
               <div class="timeline-title">BPCL Partnership</div>
               <div class="timeline-description">
-                RSG & Co was appointed as a Distributor of BPCL (Bharat Petroleum Corporation Ltd), among India's Top 5 Companies.
+                RSG & Co was appointed as a Distributor of BPCL (Bharat Petroleum Corporation Ltd), among India's Top 5
+                Companies.
               </div>
               <div class="timeline-badges">
                 <span class="timeline-badge" style="background: #2196f3; color: white;">Top 5 Company</span>
@@ -996,10 +1026,12 @@
         <!-- Rajesh Somani -->
         <div class="text-center fade-in cursor-pointer leadership-card" data-leader="rajesh">
           <div class="relative mb-6 group">
-            <img src="./Image/rajesh-somani.jpg" alt="Rajesh Somani" 
-                 class="w-64 h-80 object-cover rounded-lg mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
-                 onerror="this.src='https://via.placeholder.com/256x320/1e40af/ffffff?text=Rajesh+Somani';">
-            <div class="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <img src="./People/md.jpeg" alt="Rajesh Somani"
+              class="w-64 h-80 object-cover rounded-lg mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+              onerror="this.src='https://via.placeholder.com/256x320/1e40af/ffffff?text=Rajesh+Somani';">
+            <div
+              class="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
           </div>
           <h3 class="text-xl xs:text-lg sm:text-2xl font-bold text-gray-900 mb-2">Rajesh Somani</h3>
           <p class="text-lg xs:text-base text-gray-600 mb-4">MD & CEO</p>
@@ -1009,10 +1041,12 @@
         <!-- Manish Tibrewal -->
         <div class="text-center fade-in cursor-pointer leadership-card" data-leader="manish">
           <div class="relative mb-6 group">
-            <img src="./Image/manish-tibrewal.jpg" alt="Manish Tibrewal" 
-                 class="w-64 h-80 object-cover rounded-lg mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
-                 onerror="this.src='https://via.placeholder.com/256x320/1e40af/ffffff?text=Manish+Tibrewal';">
-            <div class="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <img src="./People/investor.jpg" alt="Manish Tibrewal"
+              class="w-64 h-80 object-cover rounded-lg mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105"
+              onerror="this.src='https://via.placeholder.com/256x320/1e40af/ffffff?text=Manish+Tibrewal';">
+            <div
+              class="absolute inset-0 bg-primary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
           </div>
           <h3 class="text-xl xs:text-lg sm:text-2xl font-bold text-gray-900 mb-2">Manish Tibrewal</h3>
           <p class="text-lg xs:text-base text-gray-600 mb-4">CFO</p>
@@ -1023,9 +1057,12 @@
   </section>
 
   <!-- Leadership Modal -->
-  <div id="leadership-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] opacity-0 invisible transition-all duration-300">
+  <div id="leadership-modal"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] opacity-0 invisible transition-all duration-300">
     <div class="flex items-center justify-center min-h-screen p-4">
-      <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="modal-content">
+      <div
+        class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300"
+        id="modal-content">
         <!-- Modal content will be inserted here -->
       </div>
     </div>
@@ -1035,8 +1072,8 @@
     <div class="max-w-7xl mx-auto px-4 xs:px-2 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-3 gap-8 xs:gap-6 mb-8">
         <div>
-          <img src="./Image/logo.png" alt="Kunjal Group Logo" class="h-12 w-10 mr-2" 
-               onerror="this.src='https://via.placeholder.com/40x32?text=Logo'; console.log('Logo not found at ./Image/logo.png, using placeholder');">
+          <img src="./Image/logo.png" alt="Kunjal Group Logo" class="h-12 w-10 mr-2"
+            onerror="this.src='https://via.placeholder.com/40x32?text=Logo'; console.log('Logo not found at ./Image/logo.png, using placeholder');">
           <p class="text-gray-400">Delivering petrochemical solutions across borders since 1983.</p>
         </div>
         <div>
@@ -1103,7 +1140,7 @@
         });
 
         // Prevent mobile menu from closing when clicking inside it
-        mobileMenu.addEventListener('click', function(e) {
+        mobileMenu.addEventListener('click', function (e) {
           e.stopPropagation();
         });
       }
@@ -1150,7 +1187,7 @@
         if (timelineSection) {
           const rect = timelineSection.getBoundingClientRect();
           const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-          
+
           if (isVisible && window.scrollY > 300) {
             timelineScrollBtn.classList.add('visible');
           } else {
@@ -1163,7 +1200,7 @@
       if (timelineScrollBtn) {
         timelineScrollBtn.addEventListener('click', () => {
           if (timelineSection) {
-            timelineSection.scrollIntoView({ 
+            timelineSection.scrollIntoView({
               behavior: 'smooth',
               block: 'start'
             });
@@ -1176,11 +1213,11 @@
 
       // Timeline item hover effects
       document.querySelectorAll('.timeline-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
           this.style.transform = 'translateY(-8px) scale(1.02)';
         });
-        
-        card.addEventListener('mouseleave', function() {
+
+        card.addEventListener('mouseleave', function () {
           this.style.transform = 'translateY(0) scale(1)';
         });
       });
@@ -1188,7 +1225,7 @@
       // Timeline smooth horizontal scroll with mouse wheel
       const timelineWrapper = document.querySelector('.timeline-wrapper');
       if (timelineWrapper) {
-        timelineWrapper.addEventListener('wheel', function(e) {
+        timelineWrapper.addEventListener('wheel', function (e) {
           if (e.deltaY !== 0) {
             e.preventDefault();
             this.scrollLeft += e.deltaY;
@@ -1205,7 +1242,7 @@
         rajesh: {
           name: "Rajesh Somani",
           title: "MD & CEO",
-          image: "./Image/rajesh-somani.jpg",
+          image: "./People/md.jpeg",
           bio: `Mr. Rajesh Somani, a visionary leader with over three decades of expertise in international commodities trading and has held leadership role as MD & CEO at global firms such as Aditya Birla Global Trading (Singapore) Pte Ltd and Global Smart Comtrade Pte Ltd, driving multi-billion-dollar revenues and pioneering strategic growth across markets.
 
 A Harvard Business School alumnus and qualified Chartered Accountant, Rajesh combines financial acumen with cutting-edge insights from executive programs in Big Data Analytics and Machine Learning (National University of Singapore).
@@ -1217,7 +1254,7 @@ Committed to industry advancement, Rajesh chairs the ICAI Dubai Chapter and as a
         manish: {
           name: "Manish Tibrewal",
           title: "CFO",
-          image: "./Image/manish-tibrewal.jpg",
+          image: "./People/investor.jpg",
           bio: `Manish Tibrewal brings extensive experience in financial management and strategic planning to his role as CFO. With over two decades of experience in the petrochemical and trading industry, he has been instrumental in driving financial excellence and operational efficiency.
 
 His expertise spans across financial planning, risk management, treasury operations, and corporate governance. Manish has successfully led multiple financial restructuring initiatives and has been pivotal in establishing robust financial controls and processes.
@@ -1256,7 +1293,7 @@ Manish is known for his analytical approach to problem-solving and his ability t
         document.body.style.overflow = 'hidden';
       }
 
-      window.closeModal = function() {
+      window.closeModal = function () {
         modal.classList.remove('modal-open');
         document.body.style.overflow = 'auto';
       }
