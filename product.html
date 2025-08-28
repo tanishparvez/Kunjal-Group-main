@@ -9,8 +9,7 @@
     <script>tailwind.config = { theme: { extend: { colors: { primary: '#1e40af', secondary: '#3b82f6' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <style>
         :where([class^="ri-"])::before {
@@ -21,7 +20,7 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* ORIGINAL NAVBAR STYLES - UNCHANGED */
+        /* NAVBAR STYLES - UNCHANGED */
         .nav-container {
             position: relative;
             background: rgba(255, 255, 255, 0.95);
@@ -93,7 +92,6 @@
             transform: scale(1.05);
         }
 
-        /* Fixed Mobile Menu Button */
         .mobile-menu-btn {
             position: relative;
             width: 44px;
@@ -189,7 +187,6 @@
             visibility: visible;
         }
 
-        /* Remove all desktop nav-item styling from mobile menu items */
         .mobile-menu .nav-item {
             display: block;
             margin: 0;
@@ -216,218 +213,295 @@
             box-shadow: none !important;
         }
 
-        /* Completely remove pseudo-elements for mobile menu items */
         .mobile-menu .nav-item::before,
         .mobile-menu .nav-item::after {
             display: none !important;
             content: none !important;
         }
 
-        /* NEW PRODUCT PAGE STYLES - FLAT DESIGN */
+        /* UPDATED PRODUCT CATALOG STYLES - BLUE & WHITE THEME */
         .category-section {
             text-align: center;
             padding: 40px 20px;
-            background: #f8fafc;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(30, 64, 175, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .category-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.15);
+            border-color: rgba(59, 130, 246, 0.2);
         }
 
         .molecular-icon {
             width: 120px;
             height: 120px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-        }
-
-        /* Alcohol Molecular Structure */
-        .alcohol-structure {
-            position: relative;
-            width: 80px;
-            height: 80px;
-        }
-
-        .alcohol-structure::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 12px;
-            height: 12px;
-            background: #22c55e;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
             border-radius: 50%;
-            box-shadow: 
-                20px 0 0 #22c55e,
-                -10px 20px 0 #22c55e,
-                30px 20px 0 #22c55e,
-                10px 40px 0 #22c55e;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
         }
 
-        .alcohol-structure::after {
-            content: '';
-            position: absolute;
-            top: 25px;
-            left: 35px;
-            width: 2px;
-            height: 15px;
-            background: #22c55e;
-            transform: rotate(45deg);
-            box-shadow: 
-                0 20px 0 #22c55e,
-                15px -5px 0 #22c55e,
-                15px 15px 0 #22c55e;
-        }
-
-        /* Aromatic Structure */
-        .aromatic-structure {
+        /* Aromatics Structure - Benzene Ring */
+        .aromatics-structure {
             position: relative;
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
         }
 
-        .aromatic-structure::before {
+        .aromatics-structure::before {
             content: '';
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
             width: 40px;
             height: 40px;
-            border: 3px solid #f59e0b;
+            border: 3px solid white;
             border-radius: 50%;
             background: transparent;
         }
 
-        .aromatic-structure::after {
+        .aromatics-structure::after {
             content: '';
             position: absolute;
-            top: 35px;
-            left: 35px;
+            top: 25px;
+            left: 25px;
             width: 10px;
             height: 10px;
-            background: #f59e0b;
+            background: white;
             border-radius: 50%;
         }
 
-        /* Ketone Structure */
-        .ketone-structure {
+        /* Acetates & Acids Structure */
+        .acetates-structure {
             position: relative;
-            width: 80px;
-            height: 80px;
-        }
-
-        .ketone-structure::before {
-            content: 'R';
-            position: absolute;
-            top: 15px;
-            left: 5px;
-            font-size: 14px;
+            width: 60px;
+            height: 60px;
+            color: white;
             font-weight: bold;
-            color: #8b5cf6;
-        }
-
-        .ketone-structure::after {
-            content: "R'";
-            position: absolute;
-            top: 15px;
-            right: 5px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #8b5cf6;
-        }
-
-        .ketone-structure .ketone-center {
-            position: absolute;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: #8b5cf6;
-            border-radius: 3px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
+        }
+
+        .acetates-structure::before {
+            content: 'COOH';
+            font-size: 14px;
+        }
+
+        /* Alcohol & Ketones Structure */
+        .alcohol-ketones-structure {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        .alcohol-ketones-structure::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 
+                15px 0 0 white,
+                -5px 15px 0 white,
+                20px 15px 0 white,
+                7px 30px 0 white;
+        }
+
+        .alcohol-ketones-structure::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            width: 2px;
+            height: 12px;
+            background: white;
+            transform: rotate(45deg);
+            box-shadow: 
+                0 15px 0 white,
+                10px -3px 0 white,
+                10px 12px 0 white;
+        }
+
+        /* Monomers & Acrylates Structure */
+        .monomers-structure {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
             font-weight: bold;
         }
 
+        .monomers-structure::before {
+            content: 'C=C';
+            font-size: 16px;
+        }
+
+        /* Organics, Fibres & Polyol Structure */
+        .organics-structure {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        .organics-structure::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 40px;
+            height: 2px;
+            background: white;
+            transform: rotate(30deg);
+        }
+
+        .organics-structure::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 40px;
+            height: 2px;
+            background: white;
+            transform: rotate(-30deg);
+        }
+
+        .organics-structure .center-dot {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        /* Manufacturing Products Structure */
+        .manufacturing-structure {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .manufacturing-structure::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 3px solid white;
+            border-radius: 8px;
+        }
+
+        .manufacturing-structure::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 
+                15px 0 0 white,
+                -15px 0 0 white,
+                0 15px 0 white,
+                0 -15px 0 white;
+        }
+
         .category-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 25px;
         }
 
         .product-list {
             text-align: left;
-            max-width: 300px;
+            max-width: 280px;
             margin: 0 auto;
         }
 
         .product-item {
             display: flex;
             align-items: center;
-            padding: 8px 0;
+            padding: 6px 0;
             color: #4b5563;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 400;
+            line-height: 1.4;
         }
 
         .product-item::before {
             content: '▶';
-            color: #ef4444;
-            margin-right: 15px;
-            font-size: 12px;
+            color: #3b82f6;
+            margin-right: 12px;
+            font-size: 10px;
         }
 
         .category-buttons {
-            margin-top: 50px;
+            margin-top: 30px;
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .coa-btn, .msds-btn {
-            padding: 12px 30px;
+            padding: 10px 25px;
             border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             border: 2px solid;
-            min-width: 120px;
+            min-width: 100px;
             text-align: center;
+            font-size: 0.9rem;
         }
 
         .coa-btn {
-            background: #10b981;
+            background: #3b82f6;
             color: white;
-            border-color: #10b981;
+            border-color: #3b82f6;
         }
 
         .coa-btn:hover {
-            background: #059669;
-            border-color: #059669;
+            background: #1e40af;
+            border-color: #1e40af;
             transform: translateY(-2px);
         }
 
         .msds-btn {
-            background: #f59e0b;
-            color: white;
-            border-color: #f59e0b;
+            background: white;
+            color: #3b82f6;
+            border-color: #3b82f6;
         }
 
         .msds-btn:hover {
-            background: #d97706;
-            border-color: #d97706;
+            background: #3b82f6;
+            color: white;
             transform: translateY(-2px);
         }
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 1024px) {
             .products-container {
-                gap: 40px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
             }
 
             .category-section {
@@ -435,14 +509,14 @@
             }
 
             .molecular-icon {
-                width: 110px;
-                height: 110px;
-                margin-bottom: 35px;
+                width: 100px;
+                height: 100px;
+                margin-bottom: 25px;
             }
 
             .category-title {
-                font-size: 1.6rem;
-                margin-bottom: 35px;
+                font-size: 1.3rem;
+                margin-bottom: 20px;
             }
         }
 
@@ -451,19 +525,17 @@
                 padding: 0 16px;
             }
 
-            /* Show mobile menu button only on mobile */
             .mobile-menu-btn {
                 display: flex !important;
             }
 
-            /* Hide desktop navigation on mobile */
             .desktop-nav {
                 display: none !important;
             }
 
             .products-container {
                 grid-template-columns: 1fr;
-                gap: 60px;
+                gap: 40px;
             }
 
             .category-section {
@@ -471,115 +543,42 @@
             }
 
             .molecular-icon {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 30px;
-            }
-
-            .category-title {
-                font-size: 1.5rem;
-                margin-bottom: 30px;
-            }
-
-            .category-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-                margin-top: 40px;
-            }
-
-            .coa-btn, .msds-btn {
-                width: 200px;
-            }
-
-            .mobile-menu-btn {
-                width: 40px;
-                height: 40px;
-            }
-
-            .mobile-menu-btn .hamburger {
-                width: 20px;
-            }
-
-            .mobile-menu-btn .hamburger::before,
-            .mobile-menu-btn .hamburger::after {
-                width: 20px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .nav-container {
-                padding: 0 12px;
-            }
-
-            .logo-container img {
-                height: 40px;
-                width: 32px;
-            }
-
-            .category-section {
-                padding: 25px 10px;
-            }
-
-            .molecular-icon {
                 width: 90px;
                 height: 90px;
-                margin-bottom: 25px;
-            }
-
-            .category-title {
-                font-size: 1.3rem;
-                margin-bottom: 25px;
-            }
-
-            .product-item {
-                font-size: 0.9rem;
-                padding: 6px 0;
-            }
-
-            .category-buttons {
-                margin-top: 35px;
-            }
-
-            .coa-btn, .msds-btn {
-                width: 180px;
-                padding: 10px 25px;
-                font-size: 0.9rem;
-            }
-
-            .mobile-menu-btn {
-                width: 36px;
-                height: 36px;
-            }
-
-            .mobile-menu-btn .hamburger {
-                width: 18px;
-            }
-
-            .mobile-menu-btn .hamburger::before,
-            .mobile-menu-btn .hamburger::after {
-                width: 18px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 0 8px;
-            }
-
-            .category-section {
-                padding: 20px 8px;
-            }
-
-            .molecular-icon {
-                width: 80px;
-                height: 80px;
                 margin-bottom: 20px;
             }
 
             .category-title {
                 font-size: 1.2rem;
-                margin-bottom: 20px;
+                margin-bottom: 18px;
+            }
+
+            .category-buttons {
+                flex-direction: row;
+                gap: 12px;
+                margin-top: 25px;
+            }
+
+            .coa-btn, .msds-btn {
+                flex: 1;
+                max-width: 120px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .category-section {
+                padding: 25px 12px;
+            }
+
+            .molecular-icon {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 18px;
+            }
+
+            .category-title {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
             }
 
             .product-item {
@@ -587,23 +586,11 @@
                 padding: 5px 0;
             }
 
-            .category-buttons {
-                margin-top: 30px;
-                gap: 12px;
-            }
-
-            .coa-btn, .msds-btn {
-                width: 160px;
-                padding: 8px 20px;
-                font-size: 0.85rem;
-            }
-
             .product-list {
-                max-width: 250px;
+                max-width: 240px;
             }
         }
 
-        /* Desktop navigation should be hidden on mobile */
         @media (max-width: 767px) {
             .desktop-nav {
                 display: none !important;
@@ -616,32 +603,12 @@
             }
         }
 
-        /* Mobile specific adjustments */
-        @media (max-width: 767px) {
-            .mobile-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-            }
-            
-            .mobile-logo {
-                display: flex;
-                align-items: center;
-            }
-        }
-
-        /* Mobile menu button should be hidden on desktop */
         @media (min-width: 768px) {
             .mobile-menu-btn {
                 display: none !important;
             }
 
             .mobile-menu {
-                display: none !important;
-            }
-            
-            .mobile-header {
                 display: none !important;
             }
         }
@@ -694,68 +661,140 @@
                 <p class="text-lg text-gray-600">Explore our comprehensive range of chemical products</p>
             </div>
 
-            <div class="products-container grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+            <div class="products-container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 max-w-7xl mx-auto">
                 
-                <!-- Alcohols Section -->
-                <div class="category-section">
-                    <div class="molecular-icon">
-                        <div class="alcohol-structure"></div>
-                    </div>
-                    <h2 class="category-title">Alcohols</h2>
-                    
-                    <div class="product-list">
-                        <div class="product-item">N-Butanol</div>
-                        <div class="product-item">Iso-Butanol</div>
-                        <div class="product-item">2-Ethyl Hexanol (Octanol)</div>
-                        <div class="product-item">Methanol</div>
-                        <div class="product-item">Isopropyl Alcohol</div>
-                    </div>
-                    
-                    <div class="category-buttons">
-                        <a href="http://127.0.0.1:5500/Allpdf/COA%20-Melamine.pdf" class="coa-btn">COA</a>
-                        <a href="http://127.0.0.1:5500/Allpdf/COA%20-Melamine.pdf" class="msds-btn">MSDS</a>
-                    </div>
-                </div>
-
                 <!-- Aromatics Section -->
                 <div class="category-section">
                     <div class="molecular-icon">
-                        <div class="aromatic-structure"></div>
+                        <div class="aromatics-structure"></div>
                     </div>
                     <h2 class="category-title">Aromatics</h2>
                     
                     <div class="product-list">
                         <div class="product-item">Toluene</div>
-                        <div class="product-item">Mixed Xylene</div>
-                        <div class="product-item">Ortho Xylene</div>
-                        <div class="product-item">Solvent C-9</div>
-                        <div class="product-item">N-Hexane</div>
+                        <div class="product-item">Mixed Xylene (Solvent & Isomer Grade)</div>
+                        <div class="product-item">Solvent C9</div>
+                        <div class="product-item">Ortho-Xylene</div>
+                        <div class="product-item">White Spirit (MTO)</div>
+                        <div class="product-item">Phenol</div>
+                        <div class="product-item">Acetone</div>
+                        <div class="product-item">C10</div>
+                        <div class="product-item">Styrene Monomer (SM)</div>
+                        <div class="product-item">Heavy Aromatics</div>
+                        <div class="product-item">Pyrolysis Gasoline (Pygas)</div>
+                        <div class="product-item">Aniline</div>
                     </div>
                     
                     <div class="category-buttons">
-                        <a href="http://127.0.0.1:5500/Allpdf/COA%20-Melamine.pdf" class="coa-btn">COA</a>
-                        <a href="http://127.0.0.1:5500/Allpdf/COA%20-Melamine.pdf" class="msds-btn">MSDS</a>
+                        <a href="#" class="coa-btn">COA</a>
+                        <a href="#" class="msds-btn">MSDS</a>
                     </div>
                 </div>
 
-                <!-- Ketones Section -->
+                <!-- Acetates & Acids Section -->
                 <div class="category-section">
                     <div class="molecular-icon">
-                        <div class="ketone-structure">
-                            <div class="ketone-center">O</div>
-                        </div>
+                        <div class="acetates-structure"></div>
                     </div>
-                    <h2 class="category-title">Ketones</h2>
+                    <h2 class="category-title">Acetates & Acids</h2>
                     
                     <div class="product-list">
-                        <div class="product-item">Cyclohexanone</div>
-                        <div class="product-item">Methyl Ethyl Ketone (MEK)</div>
-                        <div class="product-item">Methyl IsoButyl Ketone (MIBK)</div>
+                        <div class="product-item">Ethyl Acetate</div>
+                        <div class="product-item">Butyl Acetate</div>
+                        <div class="product-item">N-Propyl Acetate</div>
+                        <div class="product-item">Acetic Acid</div>
                     </div>
                     
                     <div class="category-buttons">
-                        <a href="http://127.0.0.1:5500/Allpdf/COA%20-Melamine.pdf" class="coa-btn">COA</a>
-                        <a href="http://127.0.0.1:5500/Allpdf/COA%20-Melamine.pdf" class="msds-btn">MSDS</a>
+                        <a href="#" class="coa-btn">COA</a>
+                        <a href="#" class="msds-btn">MSDS</a>
+                    </div>
+                </div>
+
+                <!-- Alcohol & Ketones Section -->
+                <div class="category-section">
+                    <div class="molecular-icon">
+                        <div class="alcohol-ketones-structure"></div>
+                    </div>
+                    <h2 class="category-title">Alcohol & Ketones</h2>
+                    
+                    <div class="product-list">
+                        <div class="product-item">Iso Propyl Alcohol</div>
+                        <div class="product-item">N Butanol</div>
+                        <div class="product-item">Ethanol</div>
+                        <div class="product-item">Methanol</div>
+                        <div class="product-item">2 Ethyl Hexanol</div>
+                        <div class="product-item">Methyl Isobutyl Ketone</div>
+                        <div class="product-item">Methyl Ethyl Ketone</div>
+                    </div>
+                    
+                    <div class="category-buttons">
+                        <a href="#" class="coa-btn">COA</a>
+                        <a href="#" class="msds-btn">MSDS</a>
+                    </div>
+                </div>
+
+                <!-- Monomers & Acrylates Section -->
+                <div class="category-section">
+                    <div class="molecular-icon">
+                        <div class="monomers-structure"></div>
+                    </div>
+                    <h2 class="category-title">Monomers & Acrylates</h2>
+                    
+                    <div class="product-list">
+                        <div class="product-item">Butyl Acrylate Monomer (BAM)</div>
+                        <div class="product-item">Vinyl Acrylate Monomer (VAM)</div>
+                        <div class="product-item">Methyl Methacrylate (MMA)</div>
+                        <div class="product-item">Methacrylic Acid (MAA)</div>
+                    </div>
+                    
+                    <div class="category-buttons">
+                        <a href="#" class="coa-btn">COA</a>
+                        <a href="#" class="msds-btn">MSDS</a>
+                    </div>
+                </div>
+
+                <!-- Organics, Fibres & Polyol Section -->
+                <div class="category-section">
+                    <div class="molecular-icon">
+                        <div class="organics-structure">
+                            <div class="center-dot"></div>
+                        </div>
+                    </div>
+                    <h2 class="category-title">Organics, Fibres & Polyol</h2>
+                    
+                    <div class="product-list">
+                        <div class="product-item">Phthalic Anhydride</div>
+                        <div class="product-item">Maleic Anhydride</div>
+                        <div class="product-item">Propylene Glycol</div>
+                        <div class="product-item">Melamine</div>
+                        <div class="product-item">Genix-3000S Polyol</div>
+                        <div class="product-item">Recron 3S</div>
+                        <div class="product-item">Fibre Fill</div>
+                    </div>
+                    
+                    <div class="category-buttons">
+                        <a href="#" class="coa-btn">COA</a>
+                        <a href="#" class="msds-btn">MSDS</a>
+                    </div>
+                </div>
+
+                <!-- Manufacturing Products Section -->
+                <div class="category-section">
+                    <div class="molecular-icon">
+                        <div class="manufacturing-structure"></div>
+                    </div>
+                    <h2 class="category-title">Manufacturing Products</h2>
+                    
+                    <div class="product-list">
+                        <div class="product-item">Veneer Colouring Chemicals</div>
+                        <div class="product-item">Steel Mill Cleaners</div>
+                        <div class="product-item">Metal Finishing</div>
+                    </div>
+                    
+                    <div class="category-buttons">
+                        <a href="#" class="coa-btn">COA</a>
+                        <a href="#" class="msds-btn">MSDS</a>
                     </div>
                 </div>
 
